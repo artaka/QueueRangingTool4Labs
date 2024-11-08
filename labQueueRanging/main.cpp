@@ -17,14 +17,24 @@ int main()
     startWelocomeAnimation();
 
     //main block
-    unsigned members;
+    int members = 0;
     map <string, vector <int>> member; //original dictionary with all data from info entering cycle
     vector <string> surnames; //list of surnames for sorting the dictionary
+
     cout << "¬ведите количество участников: ";
     cin >> members;
+    while (members < 2) {
+        if (members < 2) {
+            members = 0;
+            system("cls");
+			cout << "¬ведено некорректное количество участников! ¬ведите количество не меньше 2!" << endl;
+			cout << "¬ведите количество участников: " << endl;
+            cin >> members;
+        }
+    }
     system("cls");
 
-    if (members > 2) //info entering cycle
+    if (members >= 2) //info entering cycle
     {
         for (int i = 0;i != members;++i) 
         {
@@ -61,4 +71,7 @@ int main()
     {
         cout << "”частников должно быть больше двух!";
     }
+    cout << "ƒл€ выхода нажмите на любую кнопку дважды!";
+    getchar();
+    getchar();
 }

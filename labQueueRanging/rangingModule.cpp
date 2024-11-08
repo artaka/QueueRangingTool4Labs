@@ -5,7 +5,7 @@
 #include <algorithm> 
 using namespace std;
 
-//Summation all point of members from vector member
+//Summation all point of members from vector member func
 auto sumMembers(map <string, vector <int>> membersList, vector<string> surnamesList) {
 	map <string, int> membersListWithSum;
 	for (int i = 0;i != surnamesList.size();++i) 
@@ -17,8 +17,20 @@ auto sumMembers(map <string, vector <int>> membersList, vector<string> surnamesL
 	return membersListWithSum;
 }
 
-//Sorting block
-int ranging(map <string, vector <int>> membersList, vector<string> surnamesList) {
+//Printing rangared list func
+void printList(vector<string> sortedSurnames, map <string, vector <int>> membersList, map <string, int> membersWithSum) {
+	for (int i = 0;i != sortedSurnames.size();++i)
+	{
+		cout << i + 1 << ". " << sortedSurnames[i] << " ";
+		cout << membersList[sortedSurnames[i]][0] << " ";
+		cout << membersList[sortedSurnames[i]][1] << " ";
+		cout << membersList[sortedSurnames[i]][2] << " ";
+		cout << "(" << membersWithSum[sortedSurnames[i]] << ")" << endl;
+	}
+}
+
+//Ranging func
+void ranging(map <string, vector <int>> membersList, vector<string> surnamesList) {
 	map <string, int> membersWithSum = sumMembers(membersList, surnamesList); //Get a dictionary type {surname,points}
 	vector <string> sortedSurnames;//For sorting surnames by points
 	for (int j = 0; j < surnamesList.size();++j) 
@@ -38,13 +50,5 @@ int ranging(map <string, vector <int>> membersList, vector<string> surnamesList)
 		j--;
 	}
 	//Printing sorted list of members
-	for (int i = 0;i != sortedSurnames.size();++i)
-	{
-		cout << i + 1 << ". " << sortedSurnames[i] << " ";
-		cout << membersList[sortedSurnames[i]][0] << " ";
-		cout << membersList[sortedSurnames[i]][1] << " ";
-		cout << membersList[sortedSurnames[i]][2] << " ";
-		cout << "(" << membersWithSum[sortedSurnames[i]] << ")" << endl;
-	}
-	return 0;
+	printList(sortedSurnames, membersList, membersWithSum);
 }
